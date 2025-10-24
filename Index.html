@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Crítica - Miojo Nissin Galinha Caipira</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            max-width: 900px;
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #e74c3c;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            text-align: left;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight {
+            background-color: #ffeaa7;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .noodle-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 Q40,5 60,20 T100,20" stroke="%23f39c12" stroke-width="2" fill="none" /><path d="M0,40 Q20,25 40,40 T80,40" stroke="%23f39c12" stroke-width="2" fill="none" /><path d="M10,60 Q30,45 50,60 T90,60" stroke="%23f39c12" stroke-width="2" fill="none" /></svg>');
+            background-size: 200px;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .noodle-icon {
+            font-size: 4rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #bdc3c7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn.active {
+            background-color: #e74c3c;
+            transform: scale(1.2);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background-color: #e74c3c;
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+
+        .slide-number {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .yellow { background-color: #f1c40f; }
+        .orange { background-color: #e67e22; }
+        .red { background-color: #e74c3c; }
+        .green { background-color: #2ecc71; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+            p, ul { font-size: 1.1rem; }
+            .slide-content { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar"></div>
+    <div class="slide-number">1/6</div>
+    
+    <div class="slides-container">
+        <!-- Slide 1: Introdução -->
+        <section class="slide" id="slide1">
+            <div class="noodle-bg"></div>
+            <div class="slide-content">
+                <div class="noodle-icon">🍜</div>
+                <h1>Miojo Nissin Galinha Caipira</h1>
+                <h2>Uma Análise Crítica</h2>
+                <p>Apresentação da sala sobre o produto alimentício mais popular do Brasil</p>
+                <p style="margin-top: 2rem; font-style: italic;">Use as setas do teclado ou clique nos pontos abaixo para navegar</p>
+            </div>
+        </section>
+
+        <!-- Slide 2: Análise Crítica -->
+        <section class="slide" id="slide2">
+            <div class="noodle-bg"></div>
+            <div class="slide-content">
+                <h2>Análise Crítica</h2>
+                <p>O miojo representa muito mais do que um simples alimento rápido e barato. Sua existência e popularidade revelam aspectos importantes sobre nossa sociedade contemporânea.</p>
+                
+                <h3>Impacto na Sociedade</h3>
+                <ul>
+                    <li>Alimentação baseada em <span class="highlight">conveniência</span> em detrimento da qualidade nutricional</li>
+                    <li>Normalização do consumo de <span class="highlight">ultraprocessados</span></li>
+                    <li>Reflexo do estilo de vida <span class="highlight">acelerado</span> moderno</li>
+                    <li>Desconexão entre o consumidor e a origem dos alimentos</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 3: Identificação das Características -->
+        <section class="slide" id="slide3">
+            <div class="noodle-bg"></div>
+            <div class="slide-content">
+                <h2>Identificação das Características</h2>
+                
+                <h3>Características Físicas</h3>
+                <ul>
+                    <li><span class="color-box yellow"></span> Macarrão pré-cozido e desidratado</li>
+                    <li><span class="color-box orange"></span> Tempero em pó com sabor "galinha caipira"</li>
+                    <li><span class="color-box red"></span> Embalagem colorida e chamativa</li>
+                    <li><span class="color-box green"></span> Tempo de preparo extremamente rápido (3 minutos)</li>
+                </ul>
+                
+                <h3>Características de Marketing</h3>
+                <ul>
+                    <li>Preço acessível (R$ 1,00 - R$ 2,50)</li>
+                    <li>Disponibilidade ampla (supermercados, mercearias, etc.)</li>
+                    <li>Posicionamento como solução para fome rápida</li>
+                    <li>Associação com praticidade e economia de tempo</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 4: Padronização -->
+        <section class="slide" id="slide4">
+            <div class="noodle-bg"></div>
+            <div class="slide-content">
+                <h2>Padronização</h2>
+                <p>O miojo representa a <span class="highlight">padronização alimentar</span> em escala global, onde sabores e experiências são uniformizados para atender às demandas do mercado massificado.</p>
+                
+                <h3>Elementos de Padronização</h3>
+                <ul>
+                    <li><strong>Sabor padronizado:</strong> O "galinha caipira" não se assemelha ao sabor real de uma galinha caipira caseira</li>
+                    <li><strong>Experiência padronizada:</strong> O preparo é sempre idêntico, independente de quem prepara</li>
+                    <li><strong>Embalagem padronizada:</strong> Design reconhecível em qualquer lugar do Brasil</li>
+                    <li><strong>Texto padronizado:</strong> As instruções e informações nutricionais seguem um formato padrão</li>
+                </ul>
+                
+                <p>Esta padronização cria uma <span class="highlight">ilusão de familiaridade</span> e segurança para o consumidor.</p>
+            </div>
+        </section>
+
+        <!-- Slide 5: Falsa Individualidade -->
+        <section class="slide" id="slide5">
+            <div class="noodle-bg"></div>
+            <div class="slide-content">
+                <h2>Falsa Individualidade</h2>
+                <p>Apesar da padronização, o marketing do produto tenta criar uma sensação de <span class="highlight">individualidade</span> e <span class="highlight">personalização</span>.</p>
+                
+                <h3>Estratégias de Falsa Individualidade</h3>
+                <ul>
+                    <li>"Personalize seu miojo" - sugestões de ingredientes extras</li>
+                    <li>Variações de sabor que dão a ilusão de escolha</li>
+                    <li>Campanhas que incentivam "sua maneira" de preparar</li>
+                    <li>Uso de termos como "caseiro" e "caipira" que remetem a algo artesanal</li>
+                </ul>
+                
+                <p>Na realidade, trata-se do mesmo produto massificado com pequenas variações superficiais que mantêm a <span class="highlight">essência padronizada</span> intacta.</p>
+            </div>
+        </section>
+
+        <!-- Slide 6: Entretenimento como Fuga e Criação de Necessidade -->
+        <section class="slide" id="slide6">
+            <div class="noodle-bg"></div>
+            <div class="slide-content">
+                <h2>Entretenimento como Fuga e Criação de Necessidade</h2>
+                
+                <h3>Entretenimento como Fuga</h3>
+                <ul>
+                    <li>O preparo rápido permite mais tempo para entretenimento</li>
+                    <li>Associado a momentos de descontração (festas universitárias, lanches rápidos)</li>
+                    <li>Substitui refeições tradicionais que demandam mais tempo de preparo</li>
+                    <li>Alimenta o ciclo de produtividade > consumo rápido > entretenimento</li>
+                </ul>
+                
+                <h3>Criação de Necessidade</h3>
+                <ul>
+                    <li>Posicionamento como solução para "quem não tem tempo"</li>
+                    <li>Criação da necessidade de praticidade acima de tudo</li>
+                    <li>Normalização do consumo em situações onde antes não era comum</li>
+                    <li>Marketing que associa o produto a momentos de prazer e conveniência</li>
+                </ul>
+                
+                <p style="margin-top: 2rem; font-weight: bold;">Obrigado pela atenção!</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="navigation">
+        <div class="nav-btn active" data-slide="0"></div>
+        <div class="nav-btn" data-slide="1"></div>
+        <div class="nav-btn" data-slide="2"></div>
+        <div class="nav-btn" data-slide="3"></div>
+        <div class="nav-btn" data-slide="4"></div>
+        <div class="nav-btn" data-slide="5"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slidesContainer = document.querySelector('.slides-container');
+            const slides = document.querySelectorAll('.slide');
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const progressBar = document.querySelector('.progress-bar');
+            const slideNumber = document.querySelector('.slide-number');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            // Atualizar navegação
+            function updateNavigation() {
+                navButtons.forEach((btn, index) => {
+                    btn.classList.toggle('active', index === currentSlide);
+                });
+                
+                // Atualizar barra de progresso
+                progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+                
+                // Atualizar número do slide
+                slideNumber.textContent = `${currentSlide + 1}/${totalSlides}`;
+                
+                // Rolar para o slide atual
+                slidesContainer.scrollTo({
+                    left: currentSlide * window.innerWidth,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Navegação por botões
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentSlide = parseInt(this.getAttribute('data-slide'));
+                    updateNavigation();
+                });
+            });
+            
+            // Navegação por teclado
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateNavigation();
+                } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                    currentSlide--;
+                    updateNavigation();
+                }
+            });
+            
+            // Navegação por scroll (opcional)
+            let isScrolling = false;
+            slidesContainer.addEventListener('scroll', function() {
+                if (!isScrolling) {
+                    isScrolling = true;
+                    
+                    setTimeout(() => {
+                        const slideIndex = Math.round(slidesContainer.scrollLeft / window.innerWidth);
+                        if (slideIndex !== currentSlide) {
+                            currentSlide = slideIndex;
+                            updateNavigation();
+                        }
+                        
+                        isScrolling = false;
+                    }, 100);
+                }
+            });
+            
+            // Inicializar
+            updateNavigation();
+        });
+    </script>
+</body>
+</html>
