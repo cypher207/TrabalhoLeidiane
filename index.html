@@ -14,31 +14,34 @@
 
         :root {
             --bg-primary: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --bg-secondary: rgba(255, 255, 255, 0.85);
+            --bg-secondary: rgba(255, 255, 255, 0.92);
             --text-primary: #333;
             --text-secondary: #2c3e50;
             --accent-color: #e74c3c;
             --noodle-color: #f39c12;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow: rgba(0, 0, 0, 0.15);
             --nav-btn: #bdc3c7;
+            --hover-color: #c0392b;
         }
 
         .dark-mode {
             --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --bg-secondary: rgba(30, 30, 46, 0.9);
+            --bg-secondary: rgba(30, 30, 46, 0.95);
             --text-primary: #f5f5f5;
             --text-secondary: #e0e0e0;
             --accent-color: #ff6b6b;
             --noodle-color: #ff9f43;
-            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow: rgba(0, 0, 0, 0.4);
             --nav-btn: #4a4a6a;
+            --hover-color: #ff5252;
         }
 
         body {
             background: var(--bg-primary);
             color: var(--text-primary);
-            overflow-x: hidden;
+            overflow: hidden;
             transition: background 0.5s ease, color 0.5s ease;
+            height: 100vh;
         }
 
         .slides-container {
@@ -48,6 +51,12 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .slides-container::-webkit-scrollbar {
+            display: none;
         }
 
         .slide {
@@ -61,92 +70,118 @@
             padding: 2rem;
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .slide-content {
-            max-width: 900px;
+            max-width: 1000px;
+            width: 90%;
             text-align: center;
             z-index: 2;
-            padding: 2rem;
+            padding: 3rem;
             background-color: var(--bg-secondary);
             border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow);
-            transition: background 0.5s ease;
+            box-shadow: 0 15px 35px var(--shadow);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
         }
 
         .video-slide-content {
             max-width: 95%;
+            width: 95%;
             text-align: center;
             z-index: 2;
-            padding: 2rem;
+            padding: 2.5rem;
             background-color: var(--bg-secondary);
             border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow);
-            transition: background 0.5s ease;
+            box-shadow: 0 15px 35px var(--shadow);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .image-slide-content {
             max-width: 95%;
             max-height: 90vh;
+            width: 95%;
             text-align: center;
             z-index: 2;
-            padding: 2rem;
+            padding: 2.5rem;
             background-color: var(--bg-secondary);
             border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow);
-            transition: background 0.5s ease;
+            box-shadow: 0 15px 35px var(--shadow);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(10px);
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 1.5rem;
             color: var(--accent-color);
-            text-shadow: 2px 2px 4px var(--shadow);
+            text-shadow: 2px 2px 8px var(--shadow);
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1.5rem;
             color: var(--text-secondary);
+            font-weight: 600;
         }
 
         h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
             color: #3498db;
+            font-weight: 600;
         }
 
         p {
-            font-size: 1.3rem;
-            line-height: 1.6;
+            font-size: 1.4rem;
+            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
 
         ul {
             text-align: left;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin: 1rem 0;
-            padding-left: 2rem;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin: 1.5rem 0;
+            padding-left: 2.5rem;
         }
 
         li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: -1.2rem;
         }
 
         .highlight {
-            background-color: #ffeaa7;
-            padding: 0.2rem 0.5rem;
-            border-radius: 5px;
+            background: linear-gradient(120deg, #ffeaa7 0%, #ffeaa7 100%);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
             font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .dark-mode .highlight {
-            background-color: #ffd166;
+            background: linear-gradient(120deg, #ffd166 0%, #ffd166 100%);
             color: #333;
         }
 
@@ -158,7 +193,7 @@
             height: 100%;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 Q40,5 60,20 T100,20" stroke="%23f39c12" stroke-width="2" fill="none" /><path d="M0,40 Q20,25 40,40 T80,40" stroke="%23f39c12" stroke-width="2" fill="none" /><path d="M10,60 Q30,45 50,60 T90,60" stroke="%23f39c12" stroke-width="2" fill="none" /></svg>');
             background-size: 200px;
-            opacity: 0.1;
+            opacity: 0.08;
             z-index: 1;
         }
 
@@ -166,34 +201,75 @@
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 Q40,5 60,20 T100,20" stroke="%23ff9f43" stroke-width="2" fill="none" /><path d="M0,40 Q20,25 40,40 T80,40" stroke="%23ff9f43" stroke-width="2" fill="none" /><path d="M10,60 Q30,45 50,60 T90,60" stroke="%23ff9f43" stroke-width="2" fill="none" /></svg>');
         }
 
-        .noodle-icon {
-            font-size: 4rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
         .navigation {
             position: fixed;
-            bottom: 2rem;
+            bottom: 2.5rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             z-index: 100;
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px var(--shadow);
+            backdrop-filter: blur(10px);
         }
 
         .nav-btn {
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background-color: var(--nav-btn);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.3);
+            background-color: var(--accent-color);
         }
 
         .nav-btn.active {
             background-color: var(--accent-color);
-            transform: scale(1.2);
+            transform: scale(1.4);
+            border-color: var(--hover-color);
+        }
+
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--bg-secondary);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            box-shadow: 0 8px 25px var(--shadow);
+            z-index: 100;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-arrow:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-prev {
+            left: 2rem;
+        }
+
+        .nav-next {
+            right: 2rem;
         }
 
         .progress-bar {
@@ -201,31 +277,36 @@
             top: 0;
             left: 0;
             width: 0%;
-            height: 5px;
-            background-color: var(--accent-color);
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-color), var(--hover-color));
             z-index: 100;
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
+            box-shadow: 0 2px 8px var(--shadow);
         }
 
         .slide-number {
             position: fixed;
-            top: 1rem;
-            right: 1rem;
+            top: 1.5rem;
+            right: 1.5rem;
             background-color: var(--bg-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
             font-weight: bold;
             z-index: 100;
             transition: background 0.5s ease;
+            box-shadow: 0 4px 15px var(--shadow);
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
         }
 
         .color-box {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            margin-right: 10px;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            margin-right: 12px;
             vertical-align: middle;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .yellow { background-color: #f1c40f; }
@@ -235,76 +316,134 @@
 
         .theme-toggle {
             position: fixed;
-            top: 1rem;
-            left: 1rem;
+            top: 1.5rem;
+            left: 1.5rem;
             background-color: var(--bg-secondary);
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 10px var(--shadow);
+            box-shadow: 0 6px 20px var(--shadow);
             z-index: 100;
-            transition: background 0.5s ease;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: var(--accent-color);
+        }
+
+        .theme-toggle:hover i {
+            color: white;
         }
 
         .theme-toggle i {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
         .miojo-image {
-            max-width: 300px;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+            max-width: 320px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+            border-radius: 12px;
         }
 
         .product-image {
-            max-width: 400px;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+            max-width: 420px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+            border-radius: 12px;
         }
 
         .logo-image {
-            max-width: 350px;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+            max-width: 380px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+            border-radius: 12px;
         }
 
         .video-container {
             width: 100%;
-            max-width: 800px;
-            margin: 1rem auto;
+            max-width: 850px;
+            margin: 1.5rem auto;
         }
 
         .video-container iframe {
             width: 100%;
-            height: 450px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            height: 480px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .large-image {
             max-width: 100%;
             max-height: 70vh;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             object-fit: contain;
         }
 
+        @media (max-width: 1200px) {
+            .slide-content, .video-slide-content, .image-slide-content {
+                padding: 2.5rem;
+            }
+            
+            h1 { font-size: 3.2rem; }
+            h2 { font-size: 2.4rem; }
+        }
+
         @media (max-width: 768px) {
+            .nav-arrow {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .nav-prev { left: 1rem; }
+            .nav-next { right: 1rem; }
+            
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
-            h3 { font-size: 1.5rem; }
+            h3 { font-size: 1.6rem; }
             p, ul { font-size: 1.1rem; }
-            .slide-content, .video-slide-content, .image-slide-content { padding: 1.5rem; }
-            .miojo-image { max-width: 200px; }
-            .product-image { max-width: 300px; }
-            .logo-image { max-width: 250px; }
-            .video-container iframe { height: 250px; }
+            
+            .slide-content, .video-slide-content, .image-slide-content { 
+                padding: 2rem;
+                width: 95%;
+            }
+            
+            .miojo-image { max-width: 250px; }
+            .product-image { max-width: 320px; }
+            .logo-image { max-width: 280px; }
+            .video-container iframe { height: 280px; }
+            
+            .navigation {
+                padding: 0.8rem 1.5rem;
+                bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 1rem;
+            }
+            
+            .slide-content, .video-slide-content, .image-slide-content {
+                padding: 1.5rem;
+            }
+            
+            .nav-arrow {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -316,7 +455,10 @@
         <i>🌙</i>
     </button>
     
-    <div class="slides-container">
+    <button class="nav-arrow nav-prev" id="prevSlide">❮</button>
+    <button class="nav-arrow nav-next" id="nextSlide">❯</button>
+    
+    <div class="slides-container" id="slidesContainer">
         <!-- Slide 1: Introdução -->
         <section class="slide" id="slide1">
             <div class="noodle-bg"></div>
@@ -325,7 +467,7 @@
                 <h1>Miojo Nissin Galinha Caipira</h1>
                 <h2>Uma Análise Crítica</h2>
                 <p>Apresentação da sala sobre o produto alimentício mais popular do Brasil</p>
-                <p style="margin-top: 2rem; font-style: italic;">Use as setas do teclado ou clique nos pontos abaixo para navegar</p>
+                <p style="margin-top: 2rem; font-style: italic;">Use as setas do teclado, botões de navegação ou clique nos pontos abaixo</p>
             </div>
         </section>
 
@@ -486,7 +628,7 @@
             <div class="image-slide-content">
                 <h2>Nossa Proposta Completa</h2>
                 <img src="https://i.imgur.com/n9Z39m5.jpeg" alt="Nossa proposta completa" class="large-image">
-                <p style="margin-top: 1rem;">A evolução do conceito de macarrão instantâneo: praticidade com qualidade, tradição com inovação.</p>
+                <p style="margin-top: 1.5rem;">A evolução do conceito de macarrão instantâneo: praticidade com qualidade, tradição com inovação.</p>
             </div>
         </section>
     </div>
@@ -506,9 +648,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const slidesContainer = document.querySelector('.slides-container');
+            const slidesContainer = document.getElementById('slidesContainer');
             const slides = document.querySelectorAll('.slide');
             const navButtons = document.querySelectorAll('.nav-btn');
+            const prevButton = document.getElementById('prevSlide');
+            const nextButton = document.getElementById('nextSlide');
             const progressBar = document.querySelector('.progress-bar');
             const slideNumber = document.querySelector('.slide-number');
             const themeToggle = document.getElementById('themeToggle');
@@ -516,7 +660,9 @@
             
             let currentSlide = 0;
             const totalSlides = slides.length;
-            
+            let isScrolling = false;
+            let scrollTimeout;
+
             // Verificar preferência de tema no localStorage
             if (localStorage.getItem('darkMode') === 'enabled') {
                 document.body.classList.add('dark-mode');
@@ -536,8 +682,18 @@
                 }
             });
             
+            // Função para navegar para um slide específico
+            function goToSlide(slideIndex) {
+                if (slideIndex < 0) slideIndex = 0;
+                if (slideIndex >= totalSlides) slideIndex = totalSlides - 1;
+                
+                currentSlide = slideIndex;
+                updateNavigation();
+            }
+            
             // Atualizar navegação
             function updateNavigation() {
+                // Atualizar botões de navegação
                 navButtons.forEach((btn, index) => {
                     btn.classList.toggle('active', index === currentSlide);
                 });
@@ -553,43 +709,67 @@
                     left: currentSlide * window.innerWidth,
                     behavior: 'smooth'
                 });
+                
+                // Prevenir múltiplos scrolls simultâneos
+                isScrolling = true;
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isScrolling = false;
+                }, 400);
             }
             
-            // Navegação por botões
+            // Navegação por botões de pontos
             navButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    currentSlide = parseInt(this.getAttribute('data-slide'));
-                    updateNavigation();
+                    if (isScrolling) return;
+                    const slideIndex = parseInt(this.getAttribute('data-slide'));
+                    goToSlide(slideIndex);
                 });
+            });
+            
+            // Navegação por setas
+            prevButton.addEventListener('click', function() {
+                if (isScrolling) return;
+                goToSlide(currentSlide - 1);
+            });
+            
+            nextButton.addEventListener('click', function() {
+                if (isScrolling) return;
+                goToSlide(currentSlide + 1);
             });
             
             // Navegação por teclado
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) {
-                    currentSlide++;
-                    updateNavigation();
-                } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
-                    currentSlide--;
+                if (isScrolling) return;
+                
+                if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+                    goToSlide(currentSlide + 1);
+                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                    goToSlide(currentSlide - 1);
+                } else if (e.key === 'Home') {
+                    goToSlide(0);
+                } else if (e.key === 'End') {
+                    goToSlide(totalSlides - 1);
+                }
+            });
+            
+            // Detectar mudança de slide por scroll
+            slidesContainer.addEventListener('scroll', function() {
+                if (isScrolling) return;
+                
+                const scrollLeft = slidesContainer.scrollLeft;
+                const slideWidth = window.innerWidth;
+                const newSlide = Math.round(scrollLeft / slideWidth);
+                
+                if (newSlide !== currentSlide) {
+                    currentSlide = newSlide;
                     updateNavigation();
                 }
             });
             
-            // Navegação por scroll (opcional)
-            let isScrolling = false;
-            slidesContainer.addEventListener('scroll', function() {
-                if (!isScrolling) {
-                    isScrolling = true;
-                    
-                    setTimeout(() => {
-                        const slideIndex = Math.round(slidesContainer.scrollLeft / window.innerWidth);
-                        if (slideIndex !== currentSlide) {
-                            currentSlide = slideIndex;
-                            updateNavigation();
-                        }
-                        
-                        isScrolling = false;
-                    }, 100);
-                }
+            // Detectar redimensionamento da janela
+            window.addEventListener('resize', function() {
+                updateNavigation();
             });
             
             // Inicializar
