@@ -74,6 +74,33 @@
             transition: background 0.5s ease;
         }
 
+        .video-slide-content {
+            max-width: 95%;
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            background-color: var(--bg-secondary);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: background 0.5s ease;
+        }
+
+        .image-slide-content {
+            max-width: 95%;
+            max-height: 90vh;
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            background-color: var(--bg-secondary);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: background 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
@@ -235,19 +262,55 @@
             filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
         }
 
+        .product-image {
+            max-width: 400px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        .logo-image {
+            max-width: 350px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .large-image {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            object-fit: contain;
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
             h3 { font-size: 1.5rem; }
             p, ul { font-size: 1.1rem; }
-            .slide-content { padding: 1.5rem; }
+            .slide-content, .video-slide-content, .image-slide-content { padding: 1.5rem; }
             .miojo-image { max-width: 200px; }
+            .product-image { max-width: 300px; }
+            .logo-image { max-width: 250px; }
+            .video-container iframe { height: 250px; }
         }
     </style>
 </head>
 <body>
     <div class="progress-bar"></div>
-    <div class="slide-number">1/6</div>
+    <div class="slide-number">1/10</div>
     
     <button class="theme-toggle" id="themeToggle">
         <i>🌙</i>
@@ -353,10 +416,10 @@
                 
                 <h3>Entretenimento como Fuga</h3>
                 <ul>
-                    <li>O preparo rápido permite mais tempo para entretenimento</li>
-                    <li>Associado a momentos de descontração (festas universitárias, lanches rápidos)</li>
-                    <li>Substitui refeições tradicionais que demandam mais tempo de preparo</li>
-                    <li>Alimenta o ciclo de produtividade > consumo rápido > entretenimento</li>
+                    <li>Consumo associado a momentos de <span class="highlight">escape da realidade</span> cotidiana</li>
+                    <li>Refeição rápida que permite mais tempo para atividades de lazer</li>
+                    <li>Uso em situações de descontração como forma de <span class="highlight">fuga temporária</span> das responsabilidades</li>
+                    <li>Associação com comfort food que proporciona alívio emocional momentâneo</li>
                 </ul>
                 
                 <h3>Criação de Necessidade</h3>
@@ -366,8 +429,64 @@
                     <li>Normalização do consumo em situações onde antes não era comum</li>
                     <li>Marketing que associa o produto a momentos de prazer e conveniência</li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- Slide 7: Nosso Produto -->
+        <section class="slide" id="slide7">
+            <div class="noodle-bg"></div>
+            <div class="slide-content">
+                <h2>Nosso Produto</h2>
+                <img src="https://i.imgur.com/01c3gpF.png" alt="Nosso produto baseado no Miojo Nissin" class="product-image">
+                <p>Apresentamos nossa versão do produto, desenvolvida com base na análise crítica do Miojo Nissin Galinha Caipira original.</p>
                 
-                <p style="margin-top: 2rem; font-weight: bold;">Obrigado pela atenção!</p>
+                <h3>Características do Nosso Produto</h3>
+                <ul>
+                    <li>Ingredientes mais naturais e nutritivos</li>
+                    <li>Redução de sódio e conservantes</li>
+                    <li>Embalagem sustentável e ecológica</li>
+                    <li>Mantém a praticidade mas com melhor qualidade</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 8: Nossa Logomarca -->
+        <section class="slide" id="slide8">
+            <div class="noodle-bg"></div>
+            <div class="slide-content">
+                <h2>Nossa Logomarca</h2>
+                <img src="https://i.imgur.com/PyUNZ3z.png" alt="Logomarca do nosso produto" class="logo-image">
+                <p>Nossa identidade visual representa a evolução do conceito do miojo tradicional para uma opção mais consciente e sustentável.</p>
+                
+                <h3>Elementos da Nossa Marca</h3>
+                <ul>
+                    <li>Design que comunica naturalidade e qualidade</li>
+                    <li>Cores que remetem à sustentabilidade</li>
+                    <li>Tipografia moderna e clean</li>
+                    <li>Símbolos que representam inovação e tradição</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 9: Propaganda do Produto -->
+        <section class="slide" id="slide9">
+            <div class="noodle-bg"></div>
+            <div class="video-slide-content">
+                <h2>Propaganda do Produto</h2>
+                <p>Confira nossa campanha publicitária desenvolvida para o produto:</p>
+                <div class="video-container">
+                    <iframe width="716" height="1963" src="https://www.youtube.com/embed/P7OPOTs5fms" title="24 de outubro de 2025" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10: Imagem Final -->
+        <section class="slide" id="slide10">
+            <div class="noodle-bg"></div>
+            <div class="image-slide-content">
+                <h2>Nossa Proposta Completa</h2>
+                <img src="https://i.imgur.com/n9Z39m5.jpeg" alt="Nossa proposta completa" class="large-image">
+                <p style="margin-top: 1rem;">A evolução do conceito de macarrão instantâneo: praticidade com qualidade, tradição com inovação.</p>
             </div>
         </section>
     </div>
@@ -379,6 +498,10 @@
         <div class="nav-btn" data-slide="3"></div>
         <div class="nav-btn" data-slide="4"></div>
         <div class="nav-btn" data-slide="5"></div>
+        <div class="nav-btn" data-slide="6"></div>
+        <div class="nav-btn" data-slide="7"></div>
+        <div class="nav-btn" data-slide="8"></div>
+        <div class="nav-btn" data-slide="9"></div>
     </div>
 
     <script>
